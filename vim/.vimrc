@@ -30,6 +30,7 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'RRethy/vim-illuminate'
 Plug 'pseewald/vim-anyfold'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 let NERDTreeIgnore=['\.pyc$', '\.orig$']
