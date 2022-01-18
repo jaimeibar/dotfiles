@@ -211,6 +211,9 @@ zplug load
 
 fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$HOME/.gem/ruby/2.5.0/gems/colorls-1.4.3/zsh" $fpath)
 
+eval "$(ssh-agent)"
+ssh-add
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
