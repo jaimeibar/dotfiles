@@ -145,6 +145,7 @@ set background=dark
 colorscheme dracula
 
 au BufRead,BufNewFile */inventory set filetype=dosini
+au BufRead,BufNewFile .yamllint set filetype=yaml
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Text and Indentation
