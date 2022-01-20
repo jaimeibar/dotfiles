@@ -145,7 +145,7 @@ set background=dark
 colorscheme dracula
 
 au BufRead,BufNewFile */inventory set filetype=dosini
-au BufRead,BufNewFile .yamllint set filetype=yaml
+au BufRead,BufNewFile .yamllint,.yml,*.yamllint,*.yml set filetype=yaml foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Text and Indentation
@@ -155,6 +155,7 @@ autocmd Filetype * AnyFoldActivate
 set foldlevel=0
 " Use smart tabs
 " set smarttab
+autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 
 " 1 tab == 4 spaces
 " set shiftwidth=4
