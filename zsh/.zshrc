@@ -211,7 +211,7 @@ zplug load
 
 fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$(gem env home)/gems/colorls-$(colorls --version)/zsh" $fpath)
 
-eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)" > /dev/null
 ssh-add
 
 # Load rbenv automatically
