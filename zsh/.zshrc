@@ -166,7 +166,7 @@ zstyle ':completion::complete:*' use-cache 1
 
 export EDITOR='vim'
 export MINICOM='-m -c on'
-export PATH=/sbin:$HOME/pycharm/bin:$HOME/.local/bin:$HOME/custom/bin:/usr/sbin:$HOME/.gem/ruby/2.5.0/bin:$HOME/.gem/ruby/$(gem env | grep "RUBY VERSION" | awk '{print $4}')/bin:$PATH
+export PATH=/sbin:$HOME/pycharm/bin:$HOME/.local/bin:$HOME/custom/bin:/usr/sbin:$HOME/.rbenv/bin:$PATH
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export GREP_COLOR="37;45"
@@ -209,10 +209,13 @@ zplug "esc/conda-zsh-completion", from:github
 # zplug load --verbose
 zplug load
 
-fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$HOME/.gem/ruby/2.5.0/gems/colorls-1.4.3/zsh" $fpath)
+fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$(gem env home)/gems/colorls-$(colorls --version)/zsh" $fpath)
 
 eval "$(ssh-agent -s)"
 ssh-add
+
+# Load rbenv automatically
+eval "$(rbenv init - zsh)"
 
 # Use modern completion system
 autoload -Uz compinit
