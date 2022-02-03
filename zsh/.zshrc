@@ -171,6 +171,8 @@ export PATH=/sbin:$HOME/pycharm/bin:$HOME/.local/bin:$HOME/custom/bin:/usr/sbin:
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export GREP_COLOR="37;45"
 export GREP_COLORS="mt=37;45"
+# colored man pages¬
+export PAGER="most -s"
 
 # ssh tunnel
 # ssh -f ubuntu@remoteip -L 8000:localhost:80 -N
