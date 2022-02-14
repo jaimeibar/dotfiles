@@ -1,6 +1,6 @@
 " Plug
 call plug#begin('~/.vim/plugged')
-Plug 'sclo/haproxy.vim'
+Plug 'Joorem/vim-haproxy'
 " Plug 'wincent/terminus'
 Plug 'ervandew/supertab'
 Plug 'tmux-plugins/vim-tmux'
