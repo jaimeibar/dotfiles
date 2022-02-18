@@ -216,6 +216,10 @@ fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-z
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add
 
+# Terraform autocomplete
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+
 # Load rbenv automatically
 eval "$(rbenv init - zsh)"
 
