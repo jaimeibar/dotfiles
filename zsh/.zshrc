@@ -221,7 +221,7 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
 # Load rbenv automatically
-eval "$(rbenv init - zsh)"
+[ -h ~/.rbenv/bin/rbenv ] && eval "$(rbenv init - zsh)"
 
 # Use modern completion system
 autoload -Uz compinit
