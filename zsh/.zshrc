@@ -182,8 +182,6 @@ export PAGER="most -s"
 source $HOME/.aliases
 source $HOME/.zplug/init.zsh
 
-# Colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
 
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/git", from:oh-my-zsh
@@ -211,8 +209,6 @@ zplug "esc/conda-zsh-completion", from:github
 # zplug load --verbose
 zplug load
 
-fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$(gem env home)/gems/colorls-$(colorls --version)/zsh" $fpath)
-
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add
 
@@ -222,6 +218,11 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # Load rbenv automatically
 [ -h ~/.rbenv/bin/rbenv ] && eval "$(rbenv init - zsh)"
+
+# Colorls
+source $(dirname $(gem which colorls))/tab_complete.sh
+
+fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$(gem env home)/gems/colorls-$(colorls --version)/zsh" $fpath)
 
 # Use modern completion system
 autoload -Uz compinit
