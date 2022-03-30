@@ -4,7 +4,7 @@ Plug 'Joorem/vim-haproxy'
 " Plug 'wincent/terminus'
 Plug 'ervandew/supertab'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
