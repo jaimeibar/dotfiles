@@ -228,7 +228,4 @@ fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-z
 autoload -Uz compinit
 compinit
 
-# du -sh * is aliased to duf which clashes with duf command.
-unalias duf
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
