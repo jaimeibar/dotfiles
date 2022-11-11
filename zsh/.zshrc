@@ -166,7 +166,7 @@ zstyle ':completion::complete:*' use-cache 1
 
 export EDITOR='vim'
 export MINICOM='-m -c on'
-export PATH=/sbin:$HOME/pycharm/bin:$HOME/.local/bin:$HOME/custom/bin:/usr/sbin:$HOME/.rbenv/bin:$HOME/.gem/ruby/2.7.0/bin:/snap/bin:$PATH
+export PATH=/sbin:$HOME/pycharm/bin:$HOME/.local/bin:$HOME/custom/bin:/usr/sbin:$HOME/.rbenv/bin:$HOME/.gem/ruby/3.0.0/bin:/snap/bin:$PATH
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export GREP_COLOR="37;45"
@@ -222,7 +222,7 @@ complete -o nospace -C /usr/bin/terraform terraform
 # Colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
 
-fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$(gem env home)/gems/colorls-$(colorls --version)/zsh" $fpath)
+fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$(dirname $(gem which colorls))/../zsh" $fpath)
 
 # Use modern completion system
 autoload -Uz compinit
