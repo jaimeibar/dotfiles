@@ -1,7 +1,6 @@
 " Plug
 call plug#begin('~/.vim/plugged')
 Plug 'Joorem/vim-haproxy'
-" Plug 'wincent/terminus'
 Plug 'ervandew/supertab'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer' }
@@ -40,14 +39,14 @@ map <C-x> :NERDTreeToggle<CR>
 
 let g:pymode_python = 'python3'
 
-"""" Airline settings
+""" Airline settings
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'violet'
 " Automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 " Separators can be configured independently for the tabline,
-" so here is how you can define "straight" tabs:
+" so here is how you can define straight tabs:
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
@@ -60,7 +59,7 @@ let g:airline_right_sep = "\ue0b6"
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
-"""" End airline settings
+""" End airline settings
 
 let g:pymode_warnings = 0
 let g:pymode_folding = 0
@@ -79,7 +78,7 @@ nmap <leader>t :TagbarToggle<CR>
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=0
 
-"""" Ale plugin settings
+""" Ale plugin settings
 let g:ale_linters = {'python': ['pylint', 'flake8', 'autopep8'], 'c': ['gcc'], 'c++': ['gcc'], 'ansible': ['ansible-lint'], 'yaml': ['yamllint'], 'sql': ['sqlint']}
 
 highlight ALEErrorSign ctermbg=18 ctermfg=1
@@ -92,9 +91,9 @@ let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " vim-airline integrates with ALE for displaying error information in the status bar.
 let g:airline#extensions#ale#enabled = 1
-"""" End Ale plugin settings
+""" End Ale plugin settings
 
-"""" Nerdcommenter plugin settings
+""" Nerdcommenter plugin settings
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -106,7 +105,7 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
-"""" End Nerdcommenter plugin settings
+""" End Nerdcommenter plugin settings
 
 syntax on
 set laststatus=2
@@ -131,7 +130,7 @@ set report=0
 highlight clear SignColumn
 " set colorcolumn=80
 
-"""" Material theme settings
+""" Material theme settings
 " material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker'
 let g:material_theme_style = 'default'
 " Enable true colors
@@ -141,7 +140,7 @@ endif
 
 " To turn on italics, configure as follows:
 " let g:material_terminal_italics = 1
-"""" End Material theme settings.
+""" End Material theme settings.
 
 set background=dark
 colorscheme dracula
@@ -163,8 +162,8 @@ autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 " set shiftwidth=4
 " set softtabstop=4
 
-" set ai " Auto indent
-" set si " Smart indent
+"" set ai " Auto indent
+"" set si " Smart indent
 
 " modern backspace behavior
 set backspace=indent,eol,start
