@@ -222,7 +222,7 @@ complete -o nospace -C /usr/bin/terraform terraform
 # Colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
 
-fpath=("$HOME/custom/usr/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$(dirname $(gem which colorls))/../zsh" $fpath)
+fpath=("$HOME/.local/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-completion" "$(dirname $(gem which colorls))/../zsh" $fpath)
 
 # Use modern completion system
 autoload -Uz compinit
