@@ -182,7 +182,6 @@ export PAGER="most -s"
 source $HOME/.aliases
 source $HOME/.zplug/init.zsh
 
-
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/git", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", from:github
