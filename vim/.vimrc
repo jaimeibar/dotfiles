@@ -13,7 +13,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'base16-project/base16-vim', { 'branch': 'main' }
 Plug 'tpope/vim-sleuth'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all', 'on': 'FZF' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'wincent/ferret', { 'on': ['Ack', 'Acks'] }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
