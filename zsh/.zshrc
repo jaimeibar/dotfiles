@@ -227,4 +227,9 @@ fpath=("$HOME/.local/share/zsh/vendor-completions" "$ZPLUG_REPOS/esc/conda-zsh-c
 autoload -Uz compinit
 compinit
 
+# awscli autocomplete
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C "$HOME/.local/bin/aws_completer" aws
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
