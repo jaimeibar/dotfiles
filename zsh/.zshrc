@@ -218,6 +218,11 @@ complete -o nospace -C /usr/bin/terraform terraform
 # Load rbenv automatically
 [ -h ~/.rbenv/bin/rbenv ] && eval "$(rbenv init - zsh)"
 
+# pyenv stuff
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
 
