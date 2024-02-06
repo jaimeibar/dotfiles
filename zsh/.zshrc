@@ -220,8 +220,7 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # pyenv stuff
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)"
 
 # Colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
