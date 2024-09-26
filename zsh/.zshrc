@@ -237,3 +237,7 @@ autoload -Uz compinit && compinit
 complete -C "$HOME/.local/bin/aws_completer" aws
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
