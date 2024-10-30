@@ -1,0 +1,50 @@
+live_config_reload = true
+import = ["~/.config/alacritty/themes/themes/catppuccin.toml"]
+
+[font]
+size = 11.0
+builtin_box_drawing = true
+
+[font.normal]
+# fc-list : family style | grep -i Meslo
+# family = "Monospace"
+# family = "MesloLGMDZ Nerd Font Mono"
+family = "MesloLGMDZ Nerd Font"
+style = "RegularForPowerline"
+
+[font.offset]
+x = 0
+y = 0
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[window]
+decorations_theme_variant = "Dark"
+dynamic_title = true
+dynamic_padding = false
+
+[colors]
+
+[colors.footer_bar]
+background = '#c5c8c6'
+foreground = '#1d1f21'
+
+[colors.selection]
+text = 'CellBackground'
+background = 'CellForeground'
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t¬"
+save_to_clipboard = false
+
+[keyboard]
+[[keyboard.bindings]]
+key = "N"
+# mode = "~Alt"
+mods = "Control|Shift"
+action = "CreateNewWindow"
+
+[debug]
+log_level = "Warn"
