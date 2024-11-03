@@ -136,6 +136,11 @@ source $HOME/.aliases
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add
 
+# kops completion
+if [ $commands[kops] ]; then
+  source <(kops completion zsh)
+fi
+
 # Terraform autocomplete
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
