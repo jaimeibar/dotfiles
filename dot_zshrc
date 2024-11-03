@@ -139,11 +139,12 @@ eval "$(ssh-agent -s)" > /dev/null
 ssh-add
 
 # kops completion
-if [ $commands[kops] ]; then
+if (( $+commands[kops] )); then
   source <(kops completion zsh)
 fi
 
-if [ $commands[tmuxinator] ]; then
+# tmuxinator completion
+if (( $+commands[tmuxinator] )); then
   wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O $completions_dir/_tmuxinator
 fi
 
