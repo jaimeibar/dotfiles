@@ -132,6 +132,8 @@ export PAGER="most -s"
 
 source $HOME/.aliases
 
+completions_dir="$HOME/.local/share/zsh/vendor-completions"
+
 # Load ssh agent keys.
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add
@@ -139,6 +141,10 @@ ssh-add
 # kops completion
 if [ $commands[kops] ]; then
   source <(kops completion zsh)
+fi
+
+if [ $commands[tmuxinator] ]; then
+  wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O $completions_dir/_tmuxinator
 fi
 
 # Terraform autocomplete
@@ -155,7 +161,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 # Colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
 
-fpath=("$HOME/.local/share/zsh/vendor-completions" "$(dirname $(gem which colorls))/../zsh" $fpath)
+fpath=($completions_dir "$(dirname $(gem which colorls))/../zsh" $fpath)
 
 # Use modern completion system
 autoload -Uz compinit
