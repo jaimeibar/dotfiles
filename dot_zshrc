@@ -140,7 +140,9 @@ fi
 
 # tmuxinator completion
 if (( $+commands[tmuxinator] )); then
-  wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O $completions_dir/_tmuxinator
+  if [[ ! -f ~/.local/share/zsh/vendor-completions/_tmuxinator ]]; then
+    wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O $completions_dir/_tmuxinator
+  fi
 fi
 
 # Terraform autocomplete
@@ -164,6 +166,7 @@ autoload -Uz compinit
 compinit
 
 # Load sheldon plugin manager
+export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
 eval "$(sheldon source)"
 
 # awscli autocomplete
