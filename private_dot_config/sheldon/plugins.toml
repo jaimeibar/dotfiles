@@ -23,3 +23,9 @@ github = "zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
+
+[plugins.oh-my-zsh]
+github = "ohmyzsh/ohmyzsh"
+
+[plugins.command-not-found]
+local = "~/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh/plugins/command-not-found"
