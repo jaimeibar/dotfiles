@@ -125,7 +125,6 @@ export PAGER="most -s"
 # ssh socks5
 # ssh -D 3000 -q -C -N user@host
 
-source $HOME/.aliases
 
 completions_dir="$HOME/.local/share/zsh/vendor-completions"
 
@@ -169,6 +168,9 @@ compinit
 export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
 eval "$(sheldon source)"
 
+# Sourcing aliases
+source $HOME/.aliases
+
 # awscli autocomplete
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
@@ -186,3 +188,4 @@ eval "$(starship init zsh)"
 
 # pipx autocomplete
 eval "$(register-python-argcomplete pipx)"
+
