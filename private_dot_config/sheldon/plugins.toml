@@ -29,3 +29,6 @@ github = "ohmyzsh/ohmyzsh"
 
 [plugins.command-not-found]
 local = "~/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh/plugins/command-not-found"
+
+[plugins.common-aliases]
+local = "~/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh/plugins/common-aliases"
