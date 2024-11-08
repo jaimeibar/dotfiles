@@ -151,6 +151,9 @@ fi
 if (( $+commands[eza] )); then
   if [[ ! -f ~/.local/share/zsh/vendor-completions/_eza ]]; then
     wget https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/zsh/_eza -O $completions_dir/_eza
+    wget https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin.yml -O ~/.config/eza/catppuccin.yml
+    wget https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/dracula.yml -O ~/.config/eza/dracula.yml
+    wget https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/frosty.yml -O ~/.config/eza/frosty.yml
   fi
 fi
 
