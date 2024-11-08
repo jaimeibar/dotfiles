@@ -186,4 +186,6 @@ eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 
 # pipx autocomplete
-eval "$(register-python-argcomplete pipx)"
+if (( $+commands[pipx] )); then
+  eval "$(register-python-argcomplete pipx)"
+fi
