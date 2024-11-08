@@ -147,6 +147,13 @@ if (( $+commands[tmuxinator] )); then
   fi
 fi
 
+# exa completions
+if (( $+commands[eza] )); then
+  if [[ ! -f ~/.local/share/zsh/vendor-completions/_eza ]]; then
+    wget https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/zsh/_eza -O $completions_dir/_eza
+  fi
+fi
+
 # Terraform autocomplete
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
