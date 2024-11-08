@@ -125,6 +125,9 @@ export PAGER="most -s"
 # ssh socks5
 # ssh -D 3000 -q -C -N user@host
 
+# Use modern completion system
+autoload -Uz compinit
+compinit
 
 completions_dir="$HOME/.local/share/zsh/vendor-completions"
 
@@ -160,10 +163,6 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 
 fpath=($completions_dir "$(dirname $(gem which colorls))/../zsh" $fpath)
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
-
 # Load sheldon plugin manager
 export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
 eval "$(sheldon source)"
@@ -188,4 +187,3 @@ eval "$(starship init zsh)"
 
 # pipx autocomplete
 eval "$(register-python-argcomplete pipx)"
-
