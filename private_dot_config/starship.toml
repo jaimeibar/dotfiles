@@ -1,32 +1,83 @@
-format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#769ff0 fg:#a3aed2)\
-$directory\
-[](fg:#769ff0 bg:#394260)\
-$git_branch\
-$git_status\
-[](fg:#394260 bg:#212736)\
-$nodejs\
-$rust\
-$golang\
-$php\
-$python\
-[](fg:#212736 bg:#1d2230)\
-$time\
-[ ](fg:#1d2230)\
-\n$character"""
-
+# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-[aws]
-format = 'on [$symbol$region]($style) '
-style = 'bold blue'
-symbol = '🅰 '
+# format = """
+# [░▒▓](#a3aed2)\
+# [  ](bg:#a3aed2 fg:#090c0c)\
+# [](bg:#769ff0 fg:#a3aed2)\
+# $directory\
+# [](fg:#769ff0 bg:#394260)\
+# $git_branch\
+# $git_status\
+# [](fg:#394260 bg:#212736)\
+# $rust\
+# $golang\
+# $python\
+# [](fg:#212736 bg:#1d2230)\
+# $time\
+# [ ](fg:#1d2230)\
+# \n$character"""
 
-[aws.region_aliases]
-ap-southeast-2 = 'au'
-us-east-1 = 'va'
+# Sets user-defined palette
+# Palettes must be defined _after_ this line
+palette = "catppuccin_macchiato"
+
+# Starship modules
+[character]
+# Note the use of Catppuccin color 'peach'
+success_symbol = "[[󰄛](green) ❯](peach)"
+error_symbol = "[[󰄛](red) ❯](peach)"
+vimcmd_symbol = "[󰄛 ❮](subtext1)" # For use with zsh-vi-mode
+
+[git_branch]
+style = "bold mauve"
+symbol = ""
+truncation_length = 10
+truncation_symbol = ''
+#### style = "bg:#394260"
+#### format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+
+[directory]
+# truncation_length = 3
+truncation_length = 4
+style = "bold lavender"
+# style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[palettes.catppuccin_macchiato]
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"
 
 [battery]
 full_symbol = '🔋 '
@@ -45,34 +96,8 @@ discharging_symbol = '💦 '
 [container]
 format = '[$symbol \[$name\]]($style) '
 
-[directory]
-style = "fg:#e3e5e5 bg:#769ff0"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-
 [docker_context]
 format = 'via [🐋 $context](blue bold)'
-
-[env_var.SHELL]
-variable = 'SHELL'
-default = 'unknown shell'
-
-[env_var.USER]
-default = 'unknown user'
-
-[git_branch]
-symbol = ""
-truncation_length = 10
-truncation_symbol = ''
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_commit]
 commit_hash_length = 4
@@ -101,21 +126,11 @@ deleted = '🗑'
 format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 style = "bg:#394260"
 
-[helm]
-format = 'via [⎈ $version](bold white) '
-
 [hostname]
 ssh_only = false
 format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
 trim_at = '.tchpc.tcd.ie'
 disabled = false
-
-[kubernetes]
-format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
-disabled = false
-contexts = [
-  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
-]
 
 [line_break]
 disabled = true
@@ -123,10 +138,10 @@ disabled = true
 [localip]
 ssh_only = false
 format = '@[$localipv4](bold red) '
-disabled = false
+disabled = true
 
 [memory_usage]
-disabled = false
+disabled = true
 threshold = -1
 symbol = ' '
 style = 'bold dimmed green'
@@ -185,9 +200,6 @@ Unknown = "❓ "
 Void = "  "
 Windows = "🪟 "
 
-[package]
-format = 'via [🎁 $version](208 bold) '
-
 [python]
 symbol = '👾 '
 pyenv_version_name = true
@@ -199,16 +211,6 @@ symbol = '🔺 '
 symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[shell]
-fish_indicator = '󰈺 '
-powershell_indicator = '_'
-unknown_indicator = 'mystery shell'
-style = 'cyan bold'
-disabled = false
-
-[spack]
-format = '[$symbol$environment](dimmed blue) '
 
 [status]
 style = 'bg:blue'
@@ -239,6 +241,3 @@ format = 'user: [$user]($style) '
 disabled = false
 show_always = true
 aliases = { "corpuser034g" = "matchai" }
-
-[vagrant]
-format = 'via [⍱ $version](bold white) '
