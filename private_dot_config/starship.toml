@@ -217,8 +217,6 @@ map_symbol = true
 disabled = true
 
 [sudo]
-style = 'bold green'
-symbol = '👩‍💻 '
 disabled = false
 
 [terraform]
