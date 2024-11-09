@@ -129,7 +129,7 @@ trim_at = '.'
 disabled = false
 
 [line_break]
-disabled = true
+disabled = false
 
 [localip]
 ssh_only = false
