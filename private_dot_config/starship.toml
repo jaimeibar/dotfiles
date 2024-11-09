@@ -119,8 +119,8 @@ modified = '📝'
 staged = '[++\($count\)](green)'
 renamed = '👅'
 deleted = '🗑'
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
-style = "bg:#394260"
+# format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+# style = "bg:#394260"
 
 [hostname]
 ssh_only = true
