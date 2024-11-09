@@ -123,9 +123,9 @@ format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 style = "bg:#394260"
 
 [hostname]
-ssh_only = false
+ssh_only = true
 format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
-trim_at = '.tchpc.tcd.ie'
+trim_at = '.'
 disabled = false
 
 [line_break]
