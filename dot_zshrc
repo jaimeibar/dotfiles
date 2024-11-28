@@ -197,8 +197,10 @@ complete -C "$HOME/.local/bin/aws_completer" aws
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load atuin
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh)"
+if (( $+commands[atuin] )); then
+  . "$HOME/.atuin/bin/env"
+  eval "$(atuin init zsh)"
+fi
 
 # Load starship
 eval "$(starship init zsh)"
