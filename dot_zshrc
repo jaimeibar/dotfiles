@@ -167,7 +167,9 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
 # Load rbenv automatically
-[ -h ~/.rbenv/bin/rbenv ] && eval "$(rbenv init - zsh)"
+if (( $+commands[rbenv] )); then
+  [ -h ~/.rbenv/bin/rbenv ] && eval "$(rbenv init - zsh)"
+fi
 
 # pyenv stuff
 export PYENV_ROOT="$HOME/.pyenv"
