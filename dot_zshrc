@@ -174,9 +174,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)"
 
 # Colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
-
-fpath=($completions_dir "$(dirname $(gem which colorls))/../zsh" $fpath)
+if (( $+commands[gem] )); then
+  source $(dirname $(gem which colorls))/tab_complete.sh
+  fpath=($completions_dir "$(dirname $(gem which colorls))/../zsh" $fpath)
+fi
 
 # Load sheldon plugin manager
 export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
