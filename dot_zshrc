@@ -130,6 +130,9 @@ autoload -Uz compinit
 compinit
 
 completions_dir="$HOME/.local/share/zsh/vendor-completions"
+if [[ ! -d $completions_dir ]]; then
+  mkdir -p $completions_dir
+fi
 
 # Load ssh agent keys.
 eval "$(ssh-agent -s)" > /dev/null
