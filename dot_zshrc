@@ -151,13 +151,19 @@ if (( $+commands[tmuxinator] )); then
 fi
 
 # exa completions
+typeset -a eza_themes
+eza_themes=('catppuccin.yml' 'dracula.yml' 'frosty.yml')
 if (( $+commands[eza] )); then
   if [[ ! -f ~/.local/share/zsh/vendor-completions/_eza ]]; then
-    wget https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/zsh/_eza -O $completions_dir/_eza
+    wget https://github.com/eza-community/eza/blob/0862493ebded918454f97e7291537ce4e2643711/completions/zsh/_eza -O $completions_dir/_eza
+  fi
+  if [[ ! -d ~/.config/eza ]]; then
     mkdir -p ~/.config/eza
-    wget https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin.yml -O ~/.config/eza/catppuccin.yml
-    wget https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/dracula.yml -O ~/.config/eza/dracula.yml
-    wget https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/frosty.yml -O ~/.config/eza/frosty.yml
+    for theme in "${eza_themes[@]}"; do
+      wget https://github.com/eza-community/eza-themes/blob/74be26bbd2ce76b29c37250a2fb7cb5d6644c964/themes/$theme -O ~/.config/eza/$theme
+    done
+  fi
+  if [[ ! -L ~/.config/eza/theme.yml ]]; then
     ln -s ~/.config/eza/catppuccin.yml ~/.config/eza/theme.yml
   fi
 fi
