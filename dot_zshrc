@@ -172,9 +172,12 @@ fi
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-# Load rbenv automatically
+# Install and load rbenv automatically
 if (( $+commands[rbenv] )); then
-  [ -h ~/.rbenv/bin/rbenv ] && eval "$(rbenv init - zsh)"
+  [ -h ~/.rbenv/bin/rbenv ] && eval "$(rbenv init - --no-rehash zsh)"
+  [ ! -L ~/.local/share/zsh/vendor-completions/_rbenv ] && ln -s ~/.rbenv/completions/_rbenv ~/.local/share/zsh/vendor-completions
+else
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 fi
 
 # pyenv stuff
