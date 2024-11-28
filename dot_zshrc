@@ -180,8 +180,10 @@ if (( $+commands[gem] )); then
 fi
 
 # Load sheldon plugin manager
-export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
-eval "$(sheldon source)"
+if (( $+commands[sheldon] )); then
+  export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
+  eval "$(sheldon source)"
+fi
 
 # Sourcing aliases
 source $HOME/.aliases
