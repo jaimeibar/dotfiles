@@ -178,6 +178,7 @@ if (( $+commands[rbenv] )); then
   [ ! -L ~/.local/share/zsh/vendor-completions/_rbenv ] && ln -s ~/.rbenv/completions/_rbenv ~/.local/share/zsh/vendor-completions
   # Installing ruby-build
   [ ! -d "$(rbenv root)"/plugins/ruby-build ] && git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+  echo "Install required dependencies before install ruby version with rbenv(https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)"
 else
   git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 fi
