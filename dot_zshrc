@@ -188,6 +188,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 # Colorls
 if (( $+commands[gem] )); then
+  if (( ! $+commands[colorls] )); then
+    gem install colorls
+  fi
   source $(dirname $(gem which colorls))/tab_complete.sh
   fpath=($completions_dir "$(dirname $(gem which colorls))/../zsh" $fpath)
 fi
