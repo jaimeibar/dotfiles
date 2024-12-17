@@ -129,6 +129,8 @@ export PAGER="most -s"
 autoload -Uz compinit
 compinit
 
+osflavour="$(uname -s)"
+
 completions_dir="$HOME/.local/share/zsh/vendor-completions"
 if [[ ! -d $completions_dir ]]; then
   mkdir -p $completions_dir
@@ -214,7 +216,9 @@ complete -C "$HOME/.local/bin/aws_completer" aws
 
 # Load atuin
 if (( $+commands[atuin] )); then
-  . "$HOME/.atuin/bin/env"
+  if [[ "$osflavour" == "Darwin" ]]; then
+    . "$HOME/.atuin/bin/env"
+  fi
   eval "$(atuin init zsh)"
 fi
 
