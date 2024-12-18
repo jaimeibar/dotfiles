@@ -216,7 +216,7 @@ complete -C "$HOME/.local/bin/aws_completer" aws
 
 # Load atuin
 if (( $+commands[atuin] )); then
-  if [[ "$osflavour" == "Darwin" ]]; then
+  if [[ "$osflavour" == "Linux" ]]; then
     . "$HOME/.atuin/bin/env"
   fi
   eval "$(atuin init zsh)"
