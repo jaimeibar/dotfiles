@@ -165,7 +165,7 @@ if (( $+commands[eza] )); then
   if [[ ! -d ~/.config/eza ]]; then
     mkdir -p ~/.config/eza
     for theme in "${eza_themes[@]}"; do
-      wget https://github.com/eza-community/eza-themes/blob/74be26bbd2ce76b29c37250a2fb7cb5d6644c964/themes/$theme -O ~/.config/eza/$theme
+      wget https://github.com/eza-community/eza-themes/raw/74be26bbd2ce76b29c37250a2fb7cb5d6644c964/themes/$theme -O ~/.config/eza/$theme
     done
   fi
   if [[ ! -L ~/.config/eza/theme.yml ]]; then
