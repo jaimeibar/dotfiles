@@ -20,3 +20,6 @@ clipboard-trim-trailing-spaces = true
 clipboard-paste-protection = true
 
 copy-on-select = true
+
+keybind = ctrl+page_up=previous_tab
+keybind = ctrl+page_down=next_tab
