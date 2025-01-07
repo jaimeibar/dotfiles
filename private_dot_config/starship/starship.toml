@@ -18,6 +18,8 @@
 # [ ](fg:#1d2230)\
 # \n$character"""
 
+command_timeout = 1000
+
 # Sets user-defined palette
 # Palettes must be defined _after_ this line
 palette = "catppuccin_mocha"
