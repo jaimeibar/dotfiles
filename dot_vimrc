@@ -14,6 +14,7 @@ Plug 'base16-project/base16-vim', { 'branch': 'main' }
 Plug 'tpope/vim-sleuth'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'wincent/ferret', { 'on': ['Ack', 'Acks'] }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
