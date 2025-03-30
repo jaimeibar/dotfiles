@@ -218,6 +218,7 @@ complete -C "$HOME/.local/bin/aws_completer" aws
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load atuin
+[[ -d $HOME/.atuin/bin ]] && export PATH="$HOME/.atuin/bin:$PATH"
 if (( $+commands[atuin] )); then
   if [[ "$osflavour" == "Linux" ]]; then
     . "$HOME/.atuin/bin/env"
