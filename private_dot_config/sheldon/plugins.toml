@@ -17,6 +17,12 @@ shell = "zsh"
 [plugins.base16]
 github = "chriskempson/base16-shell"
 
+[plugins.zsh-syntax-highlighting-catppuccin]
+github = "catppuccin/zsh-syntax-highlighting"
+
+[plugins.zsh-syntax-highlighting-catppuccin.hooks]
+post = "source ~/.local/share/sheldon/repos/github.com/catppuccin/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"
+
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 
