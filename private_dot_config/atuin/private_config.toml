@@ -14,7 +14,7 @@
 # session_path = "~/.session"
 
 ## date format used, either "us" or "uk"
-# dialect = "us"
+dialect = "uk"
 
 ## default timezone to use when displaying time
 ## either "l", "local" to use the system's current local timezone, or an offset
@@ -23,13 +23,13 @@
 # timezone = "local"
 
 ## enable or disable automatic sync
-# auto_sync = true
+auto_sync = true
 
 ## enable or disable automatic update checks
 # update_check = true
 
 ## address of the sync server
-# sync_address = "https://api.atuin.sh"
+sync_address = "https://api.atuin.sh"
 
 ## how often to sync history. note that this is only triggered when a command
 ## is ran, so sync intervals may well be longer
@@ -60,11 +60,11 @@
 
 ## which style to use
 ## possible values: auto, full, compact
-# style = "auto"
+style = "auto"
 
 ## the maximum number of lines the interface should take up
 ## set it to 0 to always go full screen
-# inline_height = 0
+inline_height = 0
 
 ## Invert the UI - put the search bar at the top , Default to `false`
 # invert = false
@@ -162,16 +162,16 @@ enter_accept = true
 
 [stats]
 ## Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl
-# common_subcommands = [
-#   "apt",
+common_subcommands = [
+   "apt",
 #   "cargo",
 #   "composer",
 #   "dnf",
-#   "docker",
-#   "git",
+   "docker",
+   "git",
 #   "go",
-#   "ip",
-#   "kubectl",
+   "ip",
+   "kubectl",
 #   "nix",
 #   "nmcli",
 #   "npm",
@@ -180,9 +180,9 @@ enter_accept = true
 #   "podman",
 #   "port",
 #   "systemctl",
-#   "tmux",
+   "tmux",
 #   "yarn",
-# ]
+]
 
 ## Set commands that should be totally stripped and ignored from stats
 # common_prefix = ["sudo"]
