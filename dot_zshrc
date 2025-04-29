@@ -228,6 +228,9 @@ if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
 fi
 
+# linuxbrew load
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Terraform autocomplete
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
