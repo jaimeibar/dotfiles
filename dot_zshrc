@@ -127,10 +127,6 @@ export PAGER="most -s"
 # ssh socks5
 # ssh -D 3000 -q -C -N user@host
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
-
 osflavour="$(uname -s)"
 
 completions_dir="$HOME/.local/share/zsh/vendor-completions"
@@ -173,10 +169,6 @@ if (( $+commands[eza] )); then
   fi
 fi
 
-# Terraform autocomplete
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
-
 # Install and load rbenv automatically
 if (( $+commands[rbenv] )); then
   [ -h ~/.rbenv/bin/rbenv ] && eval "$(rbenv init - --no-rehash zsh)"
@@ -209,11 +201,6 @@ fi
 # Sourcing aliases
 source $HOME/.aliases
 
-# awscli autocomplete
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-complete -C "$HOME/.local/bin/aws_completer" aws
-
 # Load fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -240,3 +227,14 @@ fi
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
 fi
+
+# Terraform autocomplete
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+
+# awscli autocomplete
+autoload bashcompinit && bashcompinit
+complete -C "$HOME/.local/bin/aws_completer" aws
+
+# Use modern completion system
+autoload -Uz compinit && compinit
