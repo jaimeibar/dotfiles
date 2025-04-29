@@ -229,7 +229,7 @@ if (( $+commands[zoxide] )); then
 fi
 
 # linuxbrew load
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[[ -d "/home/linuxbrew/.linuxbrew/bin" ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Terraform autocomplete
 autoload -U +X bashcompinit && bashcompinit
