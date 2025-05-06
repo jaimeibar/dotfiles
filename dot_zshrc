@@ -138,6 +138,9 @@ fi
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add
 
+# Use modern completion system
+autoload -Uz compinit && compinit
+
 # kops completion
 if (( $+commands[kops] )); then
   source <(kops completion zsh)
@@ -235,6 +238,3 @@ complete -o nospace -C /usr/bin/terraform terraform
 # awscli autocomplete
 autoload bashcompinit && bashcompinit
 complete -C "$HOME/.local/bin/aws_completer" aws
-
-# Use modern completion system
-autoload -Uz compinit && compinit
