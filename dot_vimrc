@@ -33,6 +33,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Yggdroot/indentLine'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'romainl/vim-cool'
 call plug#end()
 
 let NERDTreeIgnore=['\.pyc$', '\.orig$']
