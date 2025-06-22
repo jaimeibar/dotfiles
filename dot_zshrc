@@ -240,6 +240,6 @@ autoload bashcompinit && bashcompinit
 complete -C "$HOME/.local/bin/aws_completer" aws
 
 # load brew stuff
-eval "$(brew shellenv)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 autoload -Uz compinit
 compinit
