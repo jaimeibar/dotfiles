@@ -238,3 +238,8 @@ complete -o nospace -C /usr/bin/terraform terraform
 # awscli autocomplete
 autoload bashcompinit && bashcompinit
 complete -C "$HOME/.local/bin/aws_completer" aws
+
+# load brew stuff
+eval "$(brew shellenv)"
+autoload -Uz compinit
+compinit
