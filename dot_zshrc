@@ -230,12 +230,12 @@ complete -o nospace -C /usr/bin/terraform terraform
 autoload bashcompinit && bashcompinit
 complete -C "$HOME/.local/bin/aws_completer" aws
 
-# Load atuin
-if (( $+commands[atuin] )); then
-  eval "$(atuin init zsh)"
-fi
-
 # load brew stuff
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 autoload -Uz compinit
 compinit
+
+# Load atuin
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh)"
+fi
