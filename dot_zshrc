@@ -158,9 +158,6 @@ typeset -a eza_themes
 eza_themes=('catppuccin.yml' 'dracula.yml' 'frosty.yml')
 if (( $+commands[eza] )); then
   export EZA_CONFIG_DIR=$HOME/.config/eza
-  if [[ ! -f ~/.local/share/zsh/vendor-completions/_eza ]]; then
-    wget https://github.com/eza-community/eza/raw/0862493ebded918454f97e7291537ce4e2643711/completions/zsh/_eza -O $completions_dir/_eza
-  fi
   if [[ ! -d ~/.config/eza ]]; then
     mkdir -p ~/.config/eza
     for theme in "${eza_themes[@]}"; do
