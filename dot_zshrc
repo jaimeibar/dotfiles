@@ -127,6 +127,9 @@ export PAGER="most -s"
 # ssh socks5
 # ssh -D 3000 -q -C -N user@host
 
+# load brew stuff
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 osflavour="$(uname -s)"
 
 completions_dir="$HOME/.local/share/zsh/vendor-completions"
@@ -137,9 +140,6 @@ fi
 # Load ssh agent keys.
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add
-
-# Use modern completion system
-autoload -Uz compinit && compinit
 
 # kops completion
 if (( $+commands[kops] )); then
@@ -231,12 +231,11 @@ complete -o nospace -C /usr/bin/terraform terraform
 autoload bashcompinit && bashcompinit
 complete -C "$HOME/.local/bin/aws_completer" aws
 
-# load brew stuff
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-autoload -Uz compinit
-compinit
 
 # Load atuin
 if (( $+commands[atuin] )); then
   eval "$(atuin init zsh)"
 fi
+
+# Use modern completion system
+autoload -Uz compinit && compinit
