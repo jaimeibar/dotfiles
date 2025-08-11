@@ -141,11 +141,6 @@ fi
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add
 
-# kops completion
-if (( $+commands[kops] )); then
-  source <(kops completion zsh)
-fi
-
 # tmuxinator completion
 if (( $+commands[tmuxinator] )); then
   if [[ ! -f ~/.local/share/zsh/vendor-completions/_tmuxinator ]]; then
@@ -228,7 +223,6 @@ complete -o nospace -C /usr/bin/terraform terraform
 autoload bashcompinit && bashcompinit
 complete -C "$HOME/.local/bin/aws_completer" aws
 
-
 # Load atuin
 if (( $+commands[atuin] )); then
   eval "$(atuin init zsh)"
@@ -236,3 +230,8 @@ fi
 
 # Use modern completion system
 autoload -Uz compinit && compinit
+
+# kops completion
+if (( $+commands[kops] )); then
+  source <(kops completion zsh)
+fi
