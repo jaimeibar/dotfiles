@@ -127,8 +127,10 @@ export PAGER="most -s"
 # ssh socks5
 # ssh -D 3000 -q -C -N user@host
 
+{{ if eq .chezmoi.os "linux" -}}
 # load brew stuff
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{- end }}
 
 osflavour="$(uname -s)"
 
