@@ -240,10 +240,17 @@ if (( $+commands[kops] )); then
   source <(kops completion zsh)
 fi
 
-function y() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-  yazi "$@" --cwd-file="$tmp"
-  IFS= read -r -d '' cwd < "$tmp"
-  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-  rm -f -- "$tmp"
-}
+# Yazi stuff
+if (( $+commands[yazi] )); then
+  local yazihome="$HOME/.config/yazi"
+  [ ! -d "$yazihome" ] && mkdir -p $yazihome
+  [ ! -d "$yazihome/flavors" ] && git -C $yazihome clone https://github.com/yazi-rs/flavors.git
+
+  function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
+  }
+fi
