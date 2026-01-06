@@ -164,12 +164,11 @@ set -g word-separators " @-+=:,./?%&#"
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind-key -T copy-selection-and-cancel y send-keys -X copy-selection-and-cancel
 
-# To copy, left click and drag to highlight text in yellow,
-# once you release left click yellow text will disappear and will automatically be available in clipboard
-# Update default binding of `Enter` to also use copy-pipe
-unbind -T copy-mode-vi Enter
-bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip -selection c"
-bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -in -selection clipboard"
+{{ if eq .chezmoi.os "linux" -}}
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -sel clip"
+{{ else if .chezmoi.os "darwin" }}
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+{{- end }}
 
 # -- status bar ----------------------------------------------------------------
 set -g status-position bottom
