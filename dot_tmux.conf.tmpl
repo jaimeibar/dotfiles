@@ -162,8 +162,6 @@ set -g set-clipboard on
 set -g word-separators " @-+=:,./?%&#"
 
 bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-selection-and-cancel y send-keys -X copy-selection-and-cancel
-
 {{ if eq .chezmoi.os "linux" -}}
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -sel clip"
 {{ else if eq .chezmoi.os "darwin" -}}
