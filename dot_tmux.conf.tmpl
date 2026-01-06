@@ -220,6 +220,10 @@ if 'test ! -f "${TMUX_PLUGIN_MANAGER_PATH}/custom_modules/ctp_memory.conf"' {
   run 'curl -s -H "Accept: application/vnd.github.v3.raw" https://api.github.com/repos/jaimeibar/dotfiles/contents/dot_tmux/plugins/custom_modules/ctp_memory.conf --output-dir ${TMUX_PLUGIN_MANAGER_PATH}/custom_modules --create-dirs -o ctp_memory.conf'
 }
 
+if 'test ! -f "${TMUX_PLUGIN_MANAGER_PATH}/custom_modules/primary_ip.conf"' {
+  run 'curl -s -H "Accept: application/vnd.github.v3.raw" https://api.github.com/repos/jaimeibar/dotfiles/contents/dot_tmux/plugins/custom_modules/primary_ip.conf --output-dir ${TMUX_PLUGIN_MANAGER_PATH}/custom_modules --create-dirs -o primary_ip.conf'
+}
+
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
