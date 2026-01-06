@@ -1,7 +1,7 @@
 # -- general ----------------------------------------------------------------
 
 # Set tmux plugin path env variable
-set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.tmux/plugins"
+set-environment -gF TMUX_PLUGIN_MANAGER_PATH "$HOME/.tmux/plugins"
 
 # C-b is not acceptable -- Vim uses it
 set-option -g prefix C-a
@@ -187,6 +187,9 @@ set -g status-left-length 200
 # Set the maximum length of the right component of the status line.
 set -g status-right-length 140
 
+# Allow programs in the pane to change the window name
+set -g allow-rename on
+
 # Resurrect ssh sessions
 set -g @resurrect-processes 'ssh'
 set -g @resurrect-strategy-vim 'session'
@@ -204,43 +207,21 @@ if 'test ! -d "${TMUX_PLUGIN_MANAGER_PATH}/catppuccin"' {
   run 'git clone -b v2.1.3 https://github.com/catppuccin/tmux.git "${TMUX_PLUGIN_MANAGER_PATH}/catppuccin"'
 }
 
-# Configure the catppuccin plugin
-set -g @catppuccin_flavor "mocha"
-set -g @catppuccin_window_status_style "rounded"
+# Plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-yank'
+# theme / style
+set -g @plugin 'joshmedeski/tmux-nerd-font-window-name'
+set -g @plugin 'alexwforsythe/tmux-which-key'  # prefix + space
+set -g @plugin 'dreknix/tmux-primary-ip'
 
-# Load catppuccin
-run '"${TMUX_PLUGIN_MANAGER_PATH}"/catppuccin/catppuccin.tmux'
+# tooling
+set -g @plugin 'omerxx/tmux-sessionx'          # prefix + o
 
-# load custom moudules
-if 'test ! -d "${TMUX_PLUGIN_MANAGER_PATH}/custom_modules"' {
-  run 'mkdir "${TMUX_PLUGIN_MANAGER_PATH}/custom_modules"'
-}
-
-if 'test ! -f "${TMUX_PLUGIN_MANAGER_PATH}/custom_modules/ctp_cpu.conf"' {
-  run "cat << EOF >  ~/.tmux/plugins/custom_modules/ctp_cpu.conf
-%hidden MODULE_NAME=\"ctp_cpu\"
-
-set -gq '@cpu_low_bg_color' '#{E:@thm_green}'
-set -gq '@cpu_medium_bg_color' '#{E:@thm_yellow}'
-set -gq '@cpu_high_bg_color' '#{E:@thm_red}'
-
-set -gq \"@catppuccin_${MODULE_NAME}_icon\" ' '
-set -gq \"@catppuccin_${MODULE_NAME}_color\" '#{l:#{cpu_bg_color}}'
-set -gq \"@catppuccin_${MODULE_NAME}_text\" '#{l:#{cpu_percentage}}'
-
-source -F '#{TMUX_PLUGIN_MANAGER_PATH}/catppuccin/utils/status_module.conf'
-EOF
-"
-}
-source -F '#{TMUX_PLUGIN_MANAGER_PATH}/custom_modules/ctp_cpu.conf'
-#### source -F '#{d:current_file}/custom_modules/ctp_memory.conf'
-
-# List of plugins
 set -g @plugin 'tmux-plugins/tmux-logging'
 # Needed for showing username and hostname in status bar (#U and #H holders).
 set -g @plugin 'jaimeibar/tmux-current-pane-hostname'
 set -g @plugin 'thewtex/tmux-mem-cpu-load'
-set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-sessionist'
 set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-copycat'
@@ -253,6 +234,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 # End of plugins list
 
+### configure plugins
 # The empty (shown when prefix is off) prompt and attribute can be configured, It is useful for aligning segments.
 set -g @prefix_highlight_empty_prompt ''
 # set -g @prefix_highlight_empty_attr 'fg=colour245,bg=colour250'
@@ -282,13 +264,35 @@ set -g @continuum-save-interval '30'
 # colorize the tree directory listing in the sidebar.
 set -g @sidebar-tree-command 'tree -C'
 
-# Make the status line pretty and add some modules
-set -gF status-right "#{E:@catppuccin_status_application}"
-set -agF status-right "#{E:@catppuccin_status_cpu}"
-set -agF status-right "#{E:@catppuccin_status_battery}"
-set -ag status-right '#(gitmux "#{pane_current_path}")'
-set -g status-left "#{E:@catppuccin_status_session}"
+### https://github.com/catppuccin/tmux
+set -g @catppuccin_flavor 'mocha'
+set -g @catppuccin_window_status_style 'rounded'
+set -g @catppuccin_window_number_position 'left'
+set -g @catppuccin_window_status 'no'
+set -g @catppuccin_window_default_text '#W'
+set -g @catppuccin_window_current_fill 'number'
+set -g @catppuccin_window_current_text '#W'
+set -g @catppuccin_window_current_color '#{E:@thm_surface_2}'
+set -g @catppuccin_date_time_text '%d.%m. %H:%M'
+set -g @catppuccin_status_module_text_bg '#{E:@thm_mantle}'
 
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-set -g @plugin 'tmux-plugins/tpm'
-run '~/.tmux/plugins/tpm/tpm'
+# source the plugin here
+run '#{TMUX_PLUGIN_MANAGER_PATH}/catppuccin/catppuccin.tmux'
+
+# load custom moudules
+source -F '#{TMUX_PLUGIN_MANAGER_PATH}/custom_modules/ctp_cpu.conf'
+source -F '#{TMUX_PLUGIN_MANAGER_PATH}/custom_modules/ctp_memory.conf'
+source -F '#{TMUX_PLUGIN_MANAGER_PATH}/custom_modules/primary_ip.conf'
+
+# set left and right status bar
+set -g status-left '#{E:@catppuccin_status_session} '
+set -gF status-right '#{E:@catppuccin_status_primary_ip}'
+set -agF status-right '#{E:@catppuccin_status_ctp_cpu}'
+set -agF status-right '#{E:@catppuccin_status_ctp_memory}'
+if 'test -r /sys/class/power_supply/BAT*' {
+  set -agF status-right '#{E:@catppuccin_status_battery}'
+}
+set -ag status-right '#{E:@catppuccin_status_date_time}'
+
+# initialize tmux plugin manager and source all plugins
+run '#{TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm'
