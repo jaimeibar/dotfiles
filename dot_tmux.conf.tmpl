@@ -306,9 +306,15 @@ set -g status-left '#{E:@catppuccin_status_session} '
 set -gF status-right '#{E:@catppuccin_status_primary_ip}'
 set -agF status-right '#{E:@catppuccin_status_ctp_cpu}'
 set -agF status-right '#{E:@catppuccin_status_ctp_memory}'
-if 'test -r /sys/class/power_supply/BAT*' {
+{{ if eq .chezmoi.os "linux" -}}
+if-shell 'test -r /sys/class/power_supply/BAT*' {
   set -agF status-right '#{E:@catppuccin_status_battery}'
 }
+{{ else if eq .chezmoi.os "darwin" -}}
+if-shell 'pmset -g batt 2>/dev/null | grep -q InternalBattery' {
+  set -agF status-right "#{E:@catppuccin_status_battery}"
+}
+{{- end }}
 set -ag status-right '#{E:@catppuccin_status_date_time}'
 
 # initialize tmux plugin manager and source all plugins
