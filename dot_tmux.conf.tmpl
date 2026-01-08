@@ -254,7 +254,6 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 ### configure plugins
 # The empty (shown when prefix is off) prompt and attribute can be configured, It is useful for aligning segments.
 set -g @prefix_highlight_empty_prompt ''
-# set -g @prefix_highlight_empty_attr 'fg=colour245,bg=colour250'
 
 # The prefix prompt and copy prompt can also be configured
 set -g @prefix_highlight_copy_prompt 'Copy'
@@ -323,6 +322,7 @@ if-shell 'pmset -g batt 2>/dev/null | grep -q InternalBattery' {
 set -ag status-right '#{E:@catppuccin_status_date_time}'
 set -ag status-right '#(gitmux "#{pane_current_path}")'
 set -ag status-right '#{E:@catppuccin_status_session} '
+set -ag status-right '#{prefix_highlight}'
 
 # initialize tmux plugin manager and source all plugins
 run '#{TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm'
