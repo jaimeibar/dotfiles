@@ -323,6 +323,7 @@ set -ag status-right '#{E:@catppuccin_status_date_time}'
 set -ag status-right '#(gitmux "#{pane_current_path}")'
 set -ag status-right '#{E:@catppuccin_status_session} '
 set -ag status-right '#{prefix_highlight}'
+set -ag status-right '#{?#{==:#{mouse},1},🐭,} #{?#{==:#{pane_synchronized},1},,}'
 
 # initialize tmux plugin manager and source all plugins
 run '#{TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm'
