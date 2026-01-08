@@ -285,12 +285,15 @@ set -g @sidebar-tree-command 'tree -C'
 set -g @catppuccin_flavor 'mocha'
 set -g @catppuccin_window_status_style 'rounded'
 set -g @catppuccin_window_number_position 'left'
+set -g @catppuccin_window_flags "icon"
 set -g @catppuccin_window_status 'no'
 set -g @catppuccin_window_default_text '#W'
 set -g @catppuccin_window_current_fill 'number'
 set -g @catppuccin_window_current_text '#W'
+set -g @catppuccin_window_flags_icon_zoom " 🔍"
+set -g @catppuccin_window_current_text "#W"
 set -g @catppuccin_window_current_color '#{E:@thm_surface_2}'
-set -g @catppuccin_date_time_text '%d.%m. %H:%M'
+set -g @catppuccin_date_time_text '%d.%m / %H:%M'
 set -g @catppuccin_status_module_text_bg '#{E:@thm_mantle}'
 
 # source the plugin here
@@ -302,7 +305,9 @@ source -F '#{TMUX_PLUGIN_MANAGER_PATH}/custom_modules/ctp_memory.conf'
 source -F '#{TMUX_PLUGIN_MANAGER_PATH}/custom_modules/primary_ip.conf'
 
 # set left and right status bar
-set -g status-left '#{E:@catppuccin_status_session} '
+set -g status-left ""
+set -ga status-left "#[fg=#ffffff,bg=#4f5166] #T #[fg=#4f5166,bg=#000000]"
+
 set -gF status-right '#{E:@catppuccin_status_primary_ip}'
 set -agF status-right '#{E:@catppuccin_status_ctp_cpu}'
 set -agF status-right '#{E:@catppuccin_status_ctp_memory}'
@@ -316,6 +321,8 @@ if-shell 'pmset -g batt 2>/dev/null | grep -q InternalBattery' {
 }
 {{- end }}
 set -ag status-right '#{E:@catppuccin_status_date_time}'
+set -ag status-right '#(gitmux "#{pane_current_path}")'
+set -ag status-right '#{E:@catppuccin_status_session} '
 
 # initialize tmux plugin manager and source all plugins
 run '#{TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm'
