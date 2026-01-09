@@ -280,6 +280,17 @@ set -g @continuum-save-interval '30'
 # colorize the tree directory listing in the sidebar.
 set -g @sidebar-tree-command 'tree -C'
 
+# Format used when the window is the current window.
+#  -> U+E0B2
+#  -> U+E0B0
+# 👉 -> U+1F449
+# 👈 -> U+1F448
+#  -> U+E0B6
+#  -> U+E0B4
+# 🐭 -> U+1F42D
+# 🖱  -> U+1F42D
+#  -> U+F80E
+
 ### https://github.com/catppuccin/tmux
 set -g @catppuccin_flavor 'mocha'
 set -g @catppuccin_window_status_style 'rounded'
@@ -327,6 +338,7 @@ set -ag status-right '#(gitmux "#{pane_current_path}")'
 set -ag status-right '#{E:@catppuccin_status_session} '
 set -ag status-right '#{prefix_highlight}'
 set -ag status-right '#{?#{==:#{mouse},1},🐭,} #{?#{==:#{pane_synchronized},1},,}'
+set -ag status-right ' #($TMUX_PLUGIN_MANAGER_PATH/tmux-mem-cpu-load/tmux-mem-cpu-load --interval 5)'
 
 # initialize tmux plugin manager and source all plugins
 run '#{TMUX_PLUGIN_MANAGER_PATH}/tpm/tpm'
