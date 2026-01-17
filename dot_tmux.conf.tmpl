@@ -291,6 +291,9 @@ set -g @sidebar-tree-command 'tree -C'
 # 🖱  -> U+1F42D
 #  -> U+F80E
 
+# Custom catppuccin values
+set -g @catppuccin_custom_status_right_separator ""
+
 ### https://github.com/catppuccin/tmux
 set -g @catppuccin_flavor 'mocha'
 set -g @catppuccin_window_status_style 'rounded'
@@ -319,7 +322,7 @@ set -g automatic-rename-format " #{window_icon}"
 
 # set left and right status bar
 set -g status-left ""
-set -ga status-left "#[fg=#ffffff,bg=#4f5166] #T #[fg=#4f5166,bg=#000000]"
+set -ga status-left "#[fg=#ffffff,bg=#4f5166] #T #[fg=#4f5166,bg=#000000]#{E:@catppuccin_custom_status_right_separator}"
 
 set -gF status-right '#{E:@catppuccin_status_primary_ip}'
 set -agF status-right '#{E:@catppuccin_status_ctp_cpu}'
