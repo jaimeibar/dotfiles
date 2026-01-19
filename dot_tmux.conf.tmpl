@@ -337,7 +337,7 @@ if-shell 'pmset -g batt 2>/dev/null | grep -q InternalBattery' {
 }
 {{- end }}
 set -ag status-right '#{E:@catppuccin_status_date_time}'
-set -ag status-right '#(gitmux "#{pane_current_path}")'
+set -ag status-right '#(gitmux "#{pane_current_path}") '
 set -ag status-right '#[fg=#cba6f7]#{E:@catppuccin_status_left_separator}#{E:@catppuccin_pane_right_separator}#[fg=#cdd6f4] #($TMUX_PLUGIN_MANAGER_PATH/tmux-mem-cpu-load/tmux-mem-cpu-load --interval 5) '
 set -ag status-right '#{E:@catppuccin_status_session}'
 set -ag status-right '#{?#{==:#{mouse},1},🐭,} #{?#{==:#{pane_synchronized},1},,}'
