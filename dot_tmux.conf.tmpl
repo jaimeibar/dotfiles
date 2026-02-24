@@ -328,7 +328,7 @@ set -ga status-left "#[fg=#ffffff,bg=#4f5166] #T #[fg=#4f5166,bg=#000000]#{E:@ca
 # status-right
 {{ if eq .chezmoi.hostname "batman" -}}
 set -gF status-right '#{E:@catppuccin_status_primary_ip}'
-{{- end -}}
+{{ end }}
 set -agF status-right '#{E:@catppuccin_status_ctp_cpu}'
 set -agF status-right '#{E:@catppuccin_status_ctp_memory}'
 {{ if eq .chezmoi.os "linux" -}}
@@ -339,7 +339,7 @@ if-shell 'test -r /sys/class/power_supply/BAT*' {
 if-shell 'pmset -g batt 2>/dev/null | grep -q InternalBattery' {
   set -agF status-right "#{E:@catppuccin_status_battery}"
 }
-{{- end -}}
+{{- end }}
 {{ if eq .chezmoi.hostname "batman" -}}
 set -ag status-right '#{E:@catppuccin_status_date_time}'
 {{- end }}
