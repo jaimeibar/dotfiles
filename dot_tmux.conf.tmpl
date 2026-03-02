@@ -325,6 +325,7 @@ set -g status-left ""
 set -ga status-left "#[fg=#ffffff,bg=#4f5166] #T #[fg=#4f5166,bg=#000000]#{E:@catppuccin_custom_status_right_separator}"
 
 # status-right
+set -g status-right ""
 {{ if eq .chezmoi.hostname "batman" -}}
 set -gF status-right '#{E:@catppuccin_status_primary_ip}'
 {{ end }}
