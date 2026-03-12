@@ -174,7 +174,7 @@ if (( $+commands[rbenv] )); then
   # Installing ruby-build
   [ ! -d "$(rbenv root)"/plugins/ruby-build ] && git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build && echo "Install required dependencies before install ruby version with rbenv(https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)"
 else
-  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  brew install rbenv
 fi
 
 # pyenv stuff
