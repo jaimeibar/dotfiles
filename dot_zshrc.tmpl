@@ -128,15 +128,18 @@ export PAGER="most -s"
 # ssh socks5
 # ssh -D 3000 -q -C -N user@host
 
-# Bootstrap brew
-if (( ! $+commands[brew] )); then
+# load brew stuff
+{{ if eq .chezmoi.os "linux" -}}
+if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{- else if eq .chezmoi.os "darwin" -}}
+if [[ -f "/usr/local/bin/brew" ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+{{- end }}
+else
+  # Bootstrap brew
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-
-{{ if eq .chezmoi.os "linux" -}}
-# load brew stuff
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-{{- end }}
 
 osflavour="$(uname -s)"
 
