@@ -141,8 +141,6 @@ else
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-osflavour="$(uname -s)"
-
 completions_dir="$HOME/.local/share/zsh/vendor-completions"
 if [[ ! -d $completions_dir ]]; then
   mkdir -p $completions_dir
