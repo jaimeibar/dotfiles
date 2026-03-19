@@ -193,9 +193,11 @@ fi
 if (( $+commands[gem] )); then
   if (( ! $+commands[colorls] )); then
     gem install colorls
+    git clone https://github.com/dracula/colorls.git ~/git/colorls
+    mkdir -p ~/.config/colorls
+    ln -sf ~/git/colorls/dark_colors.yaml ~/.config/colorls
   fi
   source $(dirname $(gem which colorls))/tab_complete.sh
-  fpath=($completions_dir "$(dirname $(gem which colorls))/../zsh" $fpath)
 fi
 
 # Load sheldon plugin manager
