@@ -229,7 +229,6 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
 # theme / style
 set -g @plugin 'joshmedeski/tmux-nerd-font-window-name'
-set -g @plugin 'alexwforsythe/tmux-which-key'  # prefix + space
 set -g @plugin 'dreknix/tmux-primary-ip'
 
 # tooling
@@ -245,7 +244,6 @@ set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'tmux-plugins/tmux-cpu'
-set -g @plugin 'tmux-plugins/tmux-sidebar'
 set -g @plugin 'omerxx/tmux-floax'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
@@ -274,11 +272,6 @@ set -g @continuum-save-interval '30'
 # To enable automatic start with systemd:
 # set -g @continuum-boot 'on'
 #### End tmux-continuum settings.
-
-#### tmux side-bar settings
-# tree command is needed.
-# colorize the tree directory listing in the sidebar.
-set -g @sidebar-tree-command 'tree -C'
 
 # Format used when the window is the current window.
 #  -> U+E0B2
