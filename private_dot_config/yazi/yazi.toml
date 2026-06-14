@@ -16,7 +16,7 @@ playvideo = [
 
 [open]
 prepend_rules = [
-  { name = "*.mp3", use = "playmusic" },
+  { mime = "*.mp3", use = "playmusic" },
   { mime = "video/*", use = "playvideo" },
 ]
 
