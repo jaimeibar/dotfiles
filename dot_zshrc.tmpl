@@ -248,6 +248,11 @@ if (( $+commands[kops] )); then
   source <(kops completion zsh)
 fi
 
+# kompose completion
+if (( $+commands[kompose] )); then
+  source <(kompose completion zsh)
+fi
+
 # Yazi stuff
 if (( $+commands[yazi] )); then
   local yazihome="$HOME/.config/yazi"
