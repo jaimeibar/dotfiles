@@ -145,7 +145,6 @@ set spelllang=en_gb
 set report=0
 highlight clear SignColumn
 " set colorcolumn=80
-set conceallevel=0
 
 augroup numbertoggle
   autocmd!
