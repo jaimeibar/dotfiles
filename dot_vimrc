@@ -116,6 +116,13 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 """ End Nerdcommenter plugin settings
 
+" indentline
+" Disable concealling for json files.
+let g:vim_json_conceal=0
+
+" Disable concealling for markdown files.
+let g:markdown_syntax_conceal=0
+
 syntax on
 set laststatus=2
 set encoding=UTF-8
