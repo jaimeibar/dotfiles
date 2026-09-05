@@ -256,3 +256,12 @@ if (( $+commands[yazi] )); then
     rm -f -- "$tmp"
   }
 fi
+
+# ─────────────────────────────────────────────
+# eza tree
+# ─────────────────────────────────────────────
+
+function tree() {
+  local depth=${1:-2}
+  eza --tree --level="$depth" --icons --group-directories-first
+}
