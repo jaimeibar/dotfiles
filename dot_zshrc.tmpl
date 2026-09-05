@@ -159,17 +159,17 @@ fi
 
 # exa completions
 typeset -a eza_themes
-eza_themes=('catppuccin.yml' 'dracula.yml' 'frosty.yml')
+eza_themes=('catppuccin-mocha.yml' 'frosty.yml')
 if (( $+commands[eza] )); then
   export EZA_CONFIG_DIR=$HOME/.config/eza
   if [[ ! -d ~/.config/eza ]]; then
     mkdir -p ~/.config/eza
-    for theme in "${eza_themes[@]}"; do
-      wget https://github.com/eza-community/eza-themes/raw/74be26bbd2ce76b29c37250a2fb7cb5d6644c964/themes/$theme -O ~/.config/eza/$theme
-    done
   fi
   if [[ ! -L ~/.config/eza/theme.yml ]]; then
-    ln -s ~/.config/eza/catppuccin.yml ~/.config/eza/theme.yml
+    for theme in "${eza_themes[@]}"; do
+      wget https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/$theme -O ~/.config/eza/$theme
+    done
+    ln -s ~/.config/eza/catppuccin-mocha.yml ~/.config/eza/theme.yml
   fi
 fi
 
@@ -187,17 +187,6 @@ if (( $+commands[pyenv] )); then
   export PYENV_ROOT="$HOME/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init - zsh)"
-fi
-
-# Colorls
-if (( $+commands[gem] )); then
-  if (( ! $+commands[colorls] )); then
-    gem install colorls
-    git clone https://github.com/dracula/colorls.git ~/git/colorls
-    mkdir -p ~/.config/colorls
-    ln -sf ~/git/colorls/dark_colors.yaml ~/.config/colorls
-  fi
-  source $(dirname $(gem which colorls))/tab_complete.sh
 fi
 
 # Load sheldon plugin manager
