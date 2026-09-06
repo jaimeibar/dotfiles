@@ -115,7 +115,7 @@ zstyle ':completion::complete:*' use-cache 1
 
 export EDITOR='vim'
 export MINICOM='-m -c on'
-export PATH=$HOME/.local/bin:$HOME/.local/sbin:$HOME/.rbenv/bin:/snap/bin:/sbin:/usr/sbin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.local/sbin:/snap/bin:/sbin:/usr/sbin:$PATH
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export GREP_COLOR="37;45"
@@ -171,15 +171,6 @@ if (( $+commands[eza] )); then
     done
     ln -s ~/.config/eza/catppuccin-mocha.yml ~/.config/eza/theme.yml
   fi
-fi
-
-# Install and load rbenv automatically
-if (( $+commands[rbenv] )); then
-  eval "$(rbenv init - --no-rehash zsh)"
-  # Installing ruby-build
-  [ ! -d "$(rbenv root)"/plugins/ruby-build ] && git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build && echo "Install required dependencies before install ruby version with rbenv(https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)"
-else
-  brew install rbenv
 fi
 
 # pyenv stuff
